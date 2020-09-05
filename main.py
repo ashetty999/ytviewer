@@ -85,15 +85,15 @@ class Program(object):
                                            extension_path),
                                      daemon=True)
                              for _ in range(args.processes)]
-        print(f'Starting {args.processes} processes...')
+        print('Starting {args.processes} processes...')
         for process in Program.processes:
             process.start()
-        print(f'Started {args.processes} processes.')
+        print('Started {args.processes} processes.')
         if os.name == 'nt':
             win32api.SetConsoleCtrlHandler(Program.quit)
         elif os.name == 'posix':
             signal.signal(signal.SIGINT, Program.quit)
-        print(f'Click ctrl+c when you want to stop the bot.')
+        print('Click ctrl+c when you want to stop the bot.')
         for process in Program.processes:
             process.join()
 
